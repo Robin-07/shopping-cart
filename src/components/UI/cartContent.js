@@ -6,7 +6,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import './util.css';
-import { IconButton } from '@mui/material';
+import { Button, IconButton } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -66,10 +66,9 @@ export default function CheckboxListSecondary(props) {
                   </div>
                   <div className = 'item-qty-btns'>
                     <button onClick={() => handleQtyChange(cartItem,1)}><FontAwesomeIcon style = {{ fontSize: '12px', color: 'black'}} icon = {faChevronUp} /></button>
-                    {cartItem.qty > 1 &&
                     <div>
-                    <button onClick={() => handleQtyChange(cartItem,-1)}><FontAwesomeIcon style = {{ fontSize: '12px', color: 'black'}} icon = {faChevronDown} /></button>
-                    </div>}
+                    <button disabled = {cartItem.qty == 1} onClick={() => handleQtyChange(cartItem,-1)}><FontAwesomeIcon style = {{ fontSize: '12px', color: `${cartItem.qty==1?'gray':'black'}`}} icon = {faChevronDown} /></button>
+                    </div>
                   </div>
                   </div>
                 </div>
@@ -82,7 +81,12 @@ export default function CheckboxListSecondary(props) {
             </ListItemButton>
           </ListItem>
         );
-      }) : <ListItem><ListItemText primary = 'No Items in Cart'/></ListItem>}
+      }) : <ListItem><ListItemText primary = 'Your Cart is Empty'/></ListItem>}
+      {cartItems.length ? <ListItem>
+        <div className = 'checkout-btn'>
+          <Button variant = 'contained' style = {{ backgroundColor: '#4cbb17', textTransform: 'none'}}>Proceed to Checkout</Button>
+        </div>
+        </ListItem> : ''}
     </List>
   );
 }

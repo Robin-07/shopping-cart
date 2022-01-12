@@ -5,6 +5,7 @@ import AppBar from '../UI/appBar';
 import SideBar from '../UI/sideBar';
 import ProductCard from '../UI/productCard';
 import './home.css';
+import ProductPopup from '../UI/productPopup';
 
 export default function Home(props) {
 
@@ -13,6 +14,8 @@ export default function Home(props) {
     const [selectedCategory, setSelectedCategory] = useState("");
     const [cartItems, setCartItems] = useState([]);
     const [cartTotal, setCartTotal] = useState(0);
+    const [showProductPopup, setShowProductPopup] = useState(false);
+    const [selectedProduct, setSelectedProduct] = useState({});
     
     useEffect(() => {
             axios.get('https://fakestoreapi.com/products/categories')
@@ -36,12 +39,15 @@ export default function Home(props) {
         <AppBar cartTotal = {cartTotal} setCartTotal = {setCartTotal} cartItems = {cartItems} setCartItems = {setCartItems}/> 
         <SideBar categories = {categories} selectedCategory = {selectedCategory} setSelectedCategory={setSelectedCategory} />
         <div className = 'content-container'>  
-            <div className = 'products-header'>Products under <b>{selectedCategory.replace(/\b\w/g, l => l.toUpperCase())}</b></div>
+            <div className = 'products-header'>Products under <b>{selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)}</b></div>
             <div className='products-container'>
                 {products.map((product) => selectedCategory == product.category && <ProductCard product = {product} 
-                setCartTotal = {setCartTotal} cartItems = {cartItems} setCartItems = {setCartItems} key ={product.id}/>)}
+                setCartTotal = {setCartTotal} cartItems = {cartItems} setCartItems = {setCartItems}
+                setShowProductPopup = {setShowProductPopup} setSelectedProduct = {setSelectedProduct} key ={product.id}/>)}
             </div>
         </div>
+        <ProductPopup showProductPopup = {showProductPopup} setShowProductPopup = {setShowProductPopup}
+        selectedProduct = {selectedProduct}/>
     </div>
     );
 }

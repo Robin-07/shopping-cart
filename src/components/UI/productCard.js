@@ -10,7 +10,7 @@ import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import './util.css';
 
 export default function ImgMediaCard(props) {
-  const {product, cartItems} = props;
+  const {product, cartItems, setShowProductPopup, setSelectedProduct} = props;
 
   const handleAddToCart = () => {
     let found = false;
@@ -28,8 +28,12 @@ export default function ImgMediaCard(props) {
     props.setCartTotal(prevState => prevState + 1);
   }
   return (
-    <Card sx={{ width: '18vw', height: '50vh' }} elevation={10}>
+    <Card sx={{ width: '18vw', height: '50vh', paddingTop: '20px' }} elevation={10}>
       <CardMedia
+        onClick={() => {
+          setShowProductPopup(true);
+          setSelectedProduct(product);}}
+        style = {{ cursor: 'pointer' }}
         component="img"
         alt="product"
         height="100"
@@ -42,7 +46,7 @@ export default function ImgMediaCard(props) {
       </CardContent>
       <CardActions>
         <div className='add-to-cart'>
-        <Button size="small" onClick={handleAddToCart}>Add to cart&nbsp;
+        <Button size="small" style = {{textTransform: 'none', fontSize: '1em'}} onClick={handleAddToCart}>Add to cart&nbsp;
         <FontAwesomeIcon size = "lg" icon = {faCartPlus}/>
         </Button>
         </div> 

@@ -26,3 +26,18 @@
     align-items: flex-end;
     justify-content: center;
 }
+
+.checkout-btn{
+    display: flex;
+    width: 100%;
+    justify-content: center;   
+}
+
+.product-header{
+    display: flex;
+    align-items: center;
+}
+
+.product-desc{
+    font-size: 1.5em;
+}
