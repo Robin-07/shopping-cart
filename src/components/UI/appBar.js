@@ -9,11 +9,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Tooltip from '@mui/material/Tooltip';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import Badge from '@mui/material/Badge';
 import Popover from '@mui/material/Popover';
 
-const ResponsiveAppBar = () => {
+const ResponsiveAppBar = (props) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElCart, setAnchorElCart] = React.useState(null);
 
@@ -90,8 +90,8 @@ const ResponsiveAppBar = () => {
           </Typography>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open Cart">
-              <IconButton size = 'large' onClick={handleOpenCartMenu} sx={{ p: 0 , ml: 80}}>
-              <Badge badgeContent = {'0'} color = "secondary">
+              <IconButton size = 'large' onClick={handleOpenCartMenu} sx={{ p: 0 , ml: 90}}>
+              <Badge badgeContent = {`${props.cartItems.length}`} color = "secondary">
                 <FontAwesomeIcon  icon = {faShoppingCart}/>
               </Badge>
               </IconButton>
@@ -103,11 +103,18 @@ const ResponsiveAppBar = () => {
             onClose={handleCloseCartMenu}
             anchorOrigin={{
               vertical: 'bottom',
-              horizontal: 'left',
+              horizontal: -50,
             }}
           >
             <Typography sx={{ p: 2 }}>Cart is Empty !</Typography>
           </Popover>
+          </Box>
+          <Box sx={{ flexGrow: 0 }}>
+          <Tooltip title="Guest User">
+            <IconButton sx={{ p: 0 , ml: 10}}>
+              <FontAwesomeIcon size = "lg" icon = {faUserCircle}/>
+            </IconButton>
+          </Tooltip>
           </Box>
         </Toolbar>
       </Container>

@@ -12,20 +12,16 @@ export default function ImgMediaCard() {
       <CardMedia
         component="img"
         alt="product"
-        height="70"
+        height="60"
         image="/static/images/cards/contemplative-reptile.jpg"
       />
       <CardContent>
         <Typography gutterBottom variant="h6" component="div">
           Product Name
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          A very nice product
-        </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <Button size="small">Add to cart</Button>
       </CardActions>
     </Card>
   );
