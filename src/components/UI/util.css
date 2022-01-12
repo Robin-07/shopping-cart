@@ -5,6 +5,24 @@
     justify-content: space-between;
 }
 
-.cart-item-delete{
-    z-index: 999;
+.cart-item-qty{
+    display: flex;
+}
+
+.item-qty-btns{
+    margin-left: 10px;
+    transform: translateY(-5px);
+}
+
+.item-qty-btns button{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.add-to-cart{
+    display: flex;
+    width: 100%;
+    align-items: flex-end;
+    justify-content: center;
 }

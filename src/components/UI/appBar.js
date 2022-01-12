@@ -92,7 +92,7 @@ const ResponsiveAppBar = (props) => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open Cart">
               <IconButton size = 'large' onClick={handleOpenCartMenu} sx={{ p: 0 , ml: 90}}>
-              <Badge badgeContent = {`${props.cartItems.length}`} color = "secondary">
+              <Badge badgeContent = {`${props.cartTotal}`} color = "secondary">
                 <FontAwesomeIcon  icon = {faShoppingCart}/>
               </Badge>
               </IconButton>
@@ -107,7 +107,7 @@ const ResponsiveAppBar = (props) => {
               horizontal: -50,
             }}
           >
-            <CartContent cartItems = {props.cartItems} setCartItems = {props.setCartItems}/>
+            <CartContent setCartTotal = {props.setCartTotal} cartItems = {props.cartItems} setCartItems = {props.setCartItems}/>
           </Popover>
           </Box>
           <Box sx={{ flexGrow: 0 }}>

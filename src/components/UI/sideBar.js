@@ -27,7 +27,7 @@ export default function SideDrawer(props) {;
         anchor="left"
       >
         <List>
-            <ListItem button key={'Filter By Category'}>
+            <ListItem button key={'Categories'}>
               <ListItemIcon>
               </ListItemIcon>
               <ListItemText primary={'Categories'}/>

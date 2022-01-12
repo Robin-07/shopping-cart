@@ -5,6 +5,9 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import './util.css';
 
 export default function ImgMediaCard(props) {
   const {product, cartItems} = props;
@@ -22,9 +25,10 @@ export default function ImgMediaCard(props) {
       product.qty = 1;
       props.setCartItems([ product, ...cartItems ]);
     }
+    props.setCartTotal(prevState => prevState + 1);
   }
   return (
-    <Card sx={{ maxWidth: 225, maxHeight: 300 }} elevation={10}>
+    <Card sx={{ width: '18vw', height: '50vh' }} elevation={10}>
       <CardMedia
         component="img"
         alt="product"
@@ -37,7 +41,11 @@ export default function ImgMediaCard(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" onClick={handleAddToCart}>Add to cart</Button>
+        <div className='add-to-cart'>
+        <Button size="small" onClick={handleAddToCart}>Add to cart&nbsp;
+        <FontAwesomeIcon size = "lg" icon = {faCartPlus}/>
+        </Button>
+        </div> 
       </CardActions>
     </Card>
   );

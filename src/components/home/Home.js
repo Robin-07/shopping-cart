@@ -12,6 +12,7 @@ export default function Home(props) {
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState("");
     const [cartItems, setCartItems] = useState([]);
+    const [cartTotal, setCartTotal] = useState(0);
     
     useEffect(() => {
             axios.get('https://fakestoreapi.com/products/categories')
@@ -32,13 +33,13 @@ export default function Home(props) {
 
     return (
     <div class = 'main-container'>
-        <AppBar cartItems = {cartItems} setCartItems = {setCartItems}/> 
+        <AppBar cartTotal = {cartTotal} setCartTotal = {setCartTotal} cartItems = {cartItems} setCartItems = {setCartItems}/> 
         <SideBar categories = {categories} selectedCategory = {selectedCategory} setSelectedCategory={setSelectedCategory} />
         <div className = 'content-container'>  
             <div className = 'products-header'>Products under <b>{selectedCategory.replace(/\b\w/g, l => l.toUpperCase())}</b></div>
             <div className='products-container'>
                 {products.map((product) => selectedCategory == product.category && <ProductCard product = {product} 
-                cartItems = {cartItems} setCartItems = {setCartItems} key ={product.id}/>)}
+                setCartTotal = {setCartTotal} cartItems = {cartItems} setCartItems = {setCartItems} key ={product.id}/>)}
             </div>
         </div>
     </div>
