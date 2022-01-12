@@ -8,6 +8,21 @@ import Typography from '@mui/material/Typography';
 
 export default function ImgMediaCard(props) {
   const {product, cartItems} = props;
+
+  const handleAddToCart = () => {
+    let found = false;
+    for(const item of cartItems){
+      if(product === item){
+        found = true;
+        item.qty += 1;
+        break;
+      }
+    }
+    if(!found){
+      product.qty = 1;
+      props.setCartItems([ product, ...cartItems ]);
+    }
+  }
   return (
     <Card sx={{ maxWidth: 225, maxHeight: 300 }} elevation={10}>
       <CardMedia
@@ -22,7 +37,7 @@ export default function ImgMediaCard(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" onClick={() => props.setCartItems([ product, ...cartItems ])}>Add to cart</Button>
+        <Button size="small" onClick={handleAddToCart}>Add to cart</Button>
       </CardActions>
     </Card>
   );

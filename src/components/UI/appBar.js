@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import Badge from '@mui/material/Badge';
 import Popover from '@mui/material/Popover';
+import CartContent from '../UI/cartContent';
 
 const ResponsiveAppBar = (props) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -106,7 +107,7 @@ const ResponsiveAppBar = (props) => {
               horizontal: -50,
             }}
           >
-            <Typography sx={{ p: 2 }}>Cart is Empty !</Typography>
+            <CartContent cartItems = {props.cartItems} setCartItems = {props.setCartItems}/>
           </Popover>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
