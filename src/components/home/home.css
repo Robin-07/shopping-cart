@@ -1,4 +1,27 @@
+body{
+    overflow-x: hidden;
+    background-color:#F5F5F5;
+}
+
+.main-container{
+    display: block;
+}
+
+.content-container{
+    display: block;
+    margin-left: 250px;
+    margin-top: 100px;
+}
+
+.products-header{
+    font-size: 1.75em;
+    text-align: center;
+}
+
 .products-container{
+    margin-top: 100px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 2em;
+    width: 80vw;
 }

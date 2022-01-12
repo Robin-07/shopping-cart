@@ -8,20 +8,19 @@ import Typography from '@mui/material/Typography';
 
 export default function ImgMediaCard() {
   return (
-    <Card sx={{ maxWidth: 175, maxHeight: 175 }}>
+    <Card sx={{ maxWidth: 200, maxHeight: 175 }}>
       <CardMedia
         component="img"
-        alt="green iguana"
+        alt="product"
         height="70"
         image="/static/images/cards/contemplative-reptile.jpg"
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Lizard
+        <Typography gutterBottom variant="h6" component="div">
+          Product Name
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          A very nice product
         </Typography>
       </CardContent>
       <CardActions>
