@@ -6,22 +6,23 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-export default function ImgMediaCard() {
+export default function ImgMediaCard(props) {
+  const {product, cartItems} = props;
   return (
-    <Card sx={{ maxWidth: 200, maxHeight: 175 }}>
+    <Card sx={{ maxWidth: 225, maxHeight: 300 }} elevation={10}>
       <CardMedia
         component="img"
         alt="product"
-        height="60"
-        image="/static/images/cards/contemplative-reptile.jpg"
+        height="100"
+        image={product.image}
       />
       <CardContent>
-        <Typography gutterBottom variant="h6" component="div">
-          Product Name
+        <Typography gutterBottom variant="h7" component="div">
+          {product.title}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Add to cart</Button>
+        <Button size="small" onClick={() => props.setCartItems([ product, ...cartItems ])}>Add to cart</Button>
       </CardActions>
     </Card>
   );

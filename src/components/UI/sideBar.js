@@ -26,8 +26,6 @@ export default function SideDrawer(props) {;
         variant="permanent"
         anchor="left"
       >
-        {/* <Toolbar /> */}
-        {/* <Divider /> */}
         <List>
             <ListItem button key={'Filter By Category'}>
               <ListItemIcon>
@@ -42,7 +40,7 @@ export default function SideDrawer(props) {;
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
-              <ListItemText primary={category.name} />
+              <ListItemText primary={category.replace(/\b\w/g, l => l.toUpperCase())} />
             </ListItemButton>
           ))}
         </List>

@@ -6,7 +6,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/shopping-cart" element={<Home productsPerPage={15}/>} />
+        <Route path="/shopping-cart" element={<Home/>} />
       </Routes>
     </BrowserRouter>
   );

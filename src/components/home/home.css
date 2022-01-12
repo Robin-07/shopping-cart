@@ -20,8 +20,14 @@ body{
 
 .products-container{
     margin-top: 100px;
+    padding-bottom: 50px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 2em;
+    grid-row-gap: 5em;
     width: 80vw;
+}
+
+img{
+    object-fit: contain !important;
+    margin-top: 5px;
 }
