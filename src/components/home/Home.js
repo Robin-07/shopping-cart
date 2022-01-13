@@ -14,6 +14,7 @@ export default function Home(props) {
     const [selectedCategory, setSelectedCategory] = useState("");
     const [cartItems, setCartItems] = useState([]);
     const [cartTotal, setCartTotal] = useState(0);
+    const [cartPriceTotal, setCartPriceTotal] = useState(0);
     const [showProductPopup, setShowProductPopup] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState({});
     
@@ -24,25 +25,25 @@ export default function Home(props) {
                 setCategories(res.data);
                 setSelectedCategory(res.data[0]);
             })
-            .catch((error) => console.log(error))
+            .catch((error) => console.log(error.data))
 
             axios.get('https://fakestoreapi.com/products')
             .then((res) => {
                 console.log(res.data);
                 setProducts(res.data);
             })
-            .catch(error => console.log(error))
+            .catch(error => console.log(error.data))
         },[]);
 
     return (
     <div class = 'main-container'>
-        <AppBar cartTotal = {cartTotal} setCartTotal = {setCartTotal} cartItems = {cartItems} setCartItems = {setCartItems}/> 
+        <AppBar cartPriceTotal = {cartPriceTotal} setCartPriceTotal = {setCartPriceTotal} cartTotal = {cartTotal} setCartTotal = {setCartTotal} cartItems = {cartItems} setCartItems = {setCartItems}/> 
         <SideBar categories = {categories} selectedCategory = {selectedCategory} setSelectedCategory={setSelectedCategory} />
         <div className = 'content-container'>  
             <div className = 'products-header'>Products under <b>{selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)}</b></div>
             <div className='products-container'>
                 {products.map((product) => selectedCategory == product.category && <ProductCard product = {product} 
-                setCartTotal = {setCartTotal} cartItems = {cartItems} setCartItems = {setCartItems}
+                setCartTotal = {setCartTotal} cartItems = {cartItems} setCartItems = {setCartItems} setCartPriceTotal = {setCartPriceTotal}
                 setShowProductPopup = {setShowProductPopup} setSelectedProduct = {setSelectedProduct} key ={product.id}/>)}
             </div>
         </div>

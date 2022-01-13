@@ -38,61 +38,28 @@ const ResponsiveAppBar = (props) => {
 
   return (
     <AppBar position="fixed"
-    sx={{ width: `calc(100% - 240px)`, ml: `240px` }}>
+    sx={{ width: {xl : `calc(100% - 350px)`, lg : `calc(100% - 300px)`, md : `calc(100% - 275px)`, sm : `calc(100% - 250px)`},
+     ml: { xl : '350px', lg : '300px', md : `calc(100% - 275px)`, sm : `calc(100% - 250px)`} }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: 'none', md: 'flex' } }}
+            sx={{ flex : 1}}
           >
-            Blabla Cart
+            Shopaholics
           </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current Cart"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-            </Menu>
-          </Box>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
-          >
-            LOGO
-          </Typography>
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 0, mr : {md : 15, sm : 10 } }}>
             <Tooltip title="Open Cart">
-              <IconButton size = 'large' onClick={handleOpenCartMenu} sx={{ p: 0 , ml: 90}}>
-              <Badge badgeContent = {`${props.cartTotal}`} color = "secondary">
+              <IconButton size = 'large' onClick={handleOpenCartMenu} sx={{ p: 0}}>
+              <Badge badgeContent = {`${props.cartTotal}`} sx={{
+                "& .MuiBadge-badge": {
+                  color: "white",
+                  backgroundColor: "red",
+                  fontWeight: "bold"
+                }
+              }}>
                 <FontAwesomeIcon  icon = {faShoppingCart}/>
               </Badge>
               </IconButton>
@@ -107,12 +74,13 @@ const ResponsiveAppBar = (props) => {
               horizontal: -50,
             }}
           >
-            <CartContent setCartTotal = {props.setCartTotal} cartItems = {props.cartItems} setCartItems = {props.setCartItems}/>
+            <CartContent cartPriceTotal = {props.cartPriceTotal} setCartPriceTotal = {props.setCartPriceTotal} 
+            setCartTotal = {props.setCartTotal} cartItems = {props.cartItems} setCartItems = {props.setCartItems}/>
           </Popover>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
           <Tooltip title="Guest User">
-            <IconButton sx={{ p: 0 , ml: 10}}>
+            <IconButton sx={{ p: 0}}>
               <FontAwesomeIcon size = "lg" icon = {faUserCircle}/>
             </IconButton>
           </Tooltip>

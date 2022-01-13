@@ -17,6 +17,7 @@ export default function CheckboxListSecondary(props) {
   const handleQtyChange = (item, change) => {
     item.qty += change;
     props.setCartTotal(prevState => prevState + change);
+    props.setCartPriceTotal(prevState => prevState + (change * (Math.round(item.price * 700) / 10)));
   }
 
   const handleItemDelete = (item) => {
@@ -27,6 +28,7 @@ export default function CheckboxListSecondary(props) {
     }
     setCartItems(filteredCart);
     props.setCartTotal(prevState => prevState - item.qty);
+    props.setCartPriceTotal(prevState => prevState - (Math.round((item.qty * item.price) * 700) / 10));
   }
 
   const handleToggle = (value) => () => {
@@ -82,11 +84,10 @@ export default function CheckboxListSecondary(props) {
           </ListItem>
         );
       }) : <ListItem><ListItemText primary = 'Your Cart is Empty'/></ListItem>}
-      {cartItems.length ? <ListItem>
-        <div className = 'checkout-btn'>
-          <Button variant = 'contained' style = {{ backgroundColor: '#4cbb17', textTransform: 'none'}}>Proceed to Checkout</Button>
-        </div>
-        </ListItem> : ''}
+      {cartItems.length ? 
+      <ListItem>
+        <div className = 'cart-total'>Cart Total: &#8377;&nbsp;{props.cartPriceTotal.toLocaleString('en-US')}</div>
+      </ListItem> : ''}
     </List>
   );
 }

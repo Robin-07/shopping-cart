@@ -27,17 +27,39 @@
     justify-content: center;
 }
 
-.checkout-btn{
-    display: flex;
-    width: 100%;
-    justify-content: center;   
-}
-
 .product-header{
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
+}
+
+.product-header img{
+    height: 250px;
+    width: 250px;
+}
+
+.product-header-text{
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+#transition-modal-title{
+    font-size: 1.2em;
 }
 
 .product-desc{
+    margin-top: 20px;
     font-size: 1.5em;
+    font-family: 'candara';
+    font-weight: 600;
+}
+
+.cart-total{
+    width: 100%;
+    font: 600 1em 'arial';
+    text-align: center;
 }

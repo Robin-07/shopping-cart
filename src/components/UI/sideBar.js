@@ -7,19 +7,25 @@ import ListItem from '@mui/material/ListItem';
 import { ListItemButton } from '@mui/material';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-
-const drawerWidth = 240;
+import { Man, Woman, Diamond, PhoneAndroid } from '@mui/icons-material';
+import './util.css';
 
 export default function SideDrawer(props) {;
+    
+    const categoryIcons = {
+      "electronics" : <PhoneAndroid />,
+      "jewelery" : <Diamond />,
+      "men's clothing" : <Man />,
+      "women's clothing" : <Woman />,
+    }
+
     return(
         <Drawer
         sx={{
-          width: drawerWidth,
+          width: { xl : '350px', lg : '300px', md : '275px', sm : '250px' },
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            width: drawerWidth,
+            width: { xl : '350px', lg : '300px', md : '275px', sm : '250px' },
             boxSizing: 'border-box',
           },
         }}
@@ -29,7 +35,7 @@ export default function SideDrawer(props) {;
         <Toolbar />
         <Divider />
         <List>
-            <ListItem button key={'Categories'}>
+            <ListItem key={'Categories'}>
               <ListItemIcon>
               </ListItemIcon>
               <ListItemText primary={'Categories'}/>
@@ -39,9 +45,7 @@ export default function SideDrawer(props) {;
         <List>
           {props.categories.map((category, index) => ( 
             <ListItemButton key={index} selected = {category == props.selectedCategory} onClick={() => props.setSelectedCategory(category)}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
+              <ListItemIcon>{categoryIcons[category]}</ListItemIcon>
               <ListItemText primary={category.charAt(0).toUpperCase() + category.slice(1)} />
             </ListItemButton>
           ))}
